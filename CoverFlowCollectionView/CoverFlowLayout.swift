@@ -28,7 +28,7 @@ public class CoverFlowLayout : UICollectionViewFlowLayout {
 		return true
 	}
 	
-	override public func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
+	override public func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
 		
 		var elementsAttributesInRect = super.layoutAttributesForElementsInRect(rect)!
 		var visibleRect:CGRect = CGRectZero
@@ -38,7 +38,7 @@ public class CoverFlowLayout : UICollectionViewFlowLayout {
 		let collectionViewHalfFrame = self.collectionView!.frame.size.width / 2.0
 	
 		for index in 0..<elementsAttributesInRect.count {
-			var layoutAttributes = elementsAttributesInRect[index] as! UICollectionViewLayoutAttributes
+			let layoutAttributes = elementsAttributesInRect[index] 
 			
 			if (CGRectIntersectsRect(layoutAttributes.frame, rect)) {
 				let distanceFromCenter = CGRectGetMidX(visibleRect) - layoutAttributes.center.x
